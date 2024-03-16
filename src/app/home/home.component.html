@@ -9,15 +9,18 @@
     </div>
 
     <ng-container *ngIf="files.length > 0">
-        <div *ngFor="let file of files; let i = index"
-            class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
-            role="alert" [@fadeIn] [@fadeOut]>
-            <div class="d-flex align-items-center">
-                <mat-icon class="mx-4">attach_file</mat-icon>{{ file.name }} <code class="ms-2">{{ file!.size | fileSize}}</code>
+        <div class="" style="max-height: 300px; overflow-y: auto;">
+            <div *ngFor="let file of files; let i = index"
+                class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
+                role="alert" [@fadeIn] [@fadeOut]>
+                <div class="d-flex align-items-center">
+                    <mat-icon class="mx-4">attach_file</mat-icon>{{ file.name }} <code
+                        class="ms-2">{{ file!.size | fileSize}}</code>
+                </div>
+                <button mat-icon-button class="p-0 me-4" (click)="removeFile(i)">
+                    <mat-icon style="color: red">do_not_disturb_on</mat-icon>
+                </button>
             </div>
-            <button mat-icon-button class="p-0 me-4" (click)="removeFile(i)">
-                <mat-icon style="color: red">do_not_disturb_on</mat-icon>
-            </button>
         </div>
     </ng-container>
     <ng-container *ngIf="files.length == 0">
@@ -26,4 +29,19 @@
             <mat-icon class="mx-3">info</mat-icon> Nenhum arquivo enviado
         </div>
     </ng-container>
+
+    <button mat-flat-button color="primary" style="width: 80%; color: white" class="my-2">Enviar Videos</button>
+
+    <p>Lista de Videos</p>
+
+    <div *ngFor="let file of files; let i = index"
+        class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3" role="alert" [@fadeIn] [@fadeOut]>
+        <div class="d-flex align-items-center">
+            <mat-icon class="mx-4">attach_file</mat-icon>{{ file.name }} <code class="ms-2">{{ file!.size | fileSize}}</code>
+        </div>
+        <button mat-icon-button class="p-0 me-4" (click)="removeFile(i)">
+            <mat-icon style="color: red">do_not_disturb_on</mat-icon>
+        </button>
+    </div>
+
 </div>

@@ -5,15 +5,14 @@
         <div class="col-md-12 text-center">
             <div>
                 <p class="fs-5">
-                    Drag and drop file here or click.
+                    Arraste e solte o arquivo aqui ou clique.
                 </p>
             </div>
-            <input id="customFileInput" #customFileInput type="file" class="custom-file-input" (change)="setFile($event)" [accept]="accept" multiple/>
-            <div class="row" *ngFor="let file of selectedFiles" [@expand] [@collapse]>
-                <div class="d-flex align-items-center justify-content-center mt-4">
-                    <mat-chip-option class="w-20 text-center">{{ file.name }}</mat-chip-option>
-                </div>
-            </div>
+            <input id="customFileInput" #customFileInput type="file" class="custom-file-input"
+                (change)="setFile($event)" [accept]="accept" multiple />
+            <!-- <div class="d-flex align-items-center" *ngFor="let file of selectedFiles" [@expand] [@collapse]>
+                <mat-chip-option class="w-20 text-center">{{ file.name }}</mat-chip-option>
+            </div> -->
         </div>
     </div>
 </div>
