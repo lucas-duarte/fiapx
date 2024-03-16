@@ -7,4 +7,26 @@
     <div class="row">
         <app-upload-file (fileEvent)="getFile($event)"/>
     </div>
+
+    <ng-container *ngIf="file">
+        <div class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
+            role="alert" [@fadeIn] [@fadeOut]>
+            <div class="d-flex align-items-center">
+                <mat-icon class="mx-4">attach_file</mat-icon>{{ file.name }} <code class="ms-2">{{ file!.size}}</code>
+            </div>
+            <button mat-icon-button class="p-0 me-4" (click)="removeFile()">
+                <mat-icon style="color: red">do_not_disturb_on</mat-icon>
+            </button>
+            <ng-template #dowloadFile>
+                <button mat-icon-button class="p-0 me-4" (click)="downloadFile()">
+                    <mat-icon color="primary">download</mat-icon>
+                </button>
+            </ng-template>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!file">
+        <div class="alert alert-primary mt-2 mx-3 shadow-none d-flex align-items-center justify-content-center" role="alert" [@fadeIn] [@fadeOut] #alert>
+            <mat-icon class="mx-3">info</mat-icon> There are no submitted files
+        </div>
+    </ng-container>
 </div>

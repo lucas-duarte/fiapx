@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { fadeInAnimation, fadeOutAnimation } from '../core/constants/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [fadeInAnimation, fadeOutAnimation]
 })
 export class HomeComponent {
 
@@ -23,4 +25,8 @@ export class HomeComponent {
   uploadFile(){
     
   }
+
+  downloadFile(){}
+
+  removeFile(){}
 }
