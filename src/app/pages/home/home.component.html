@@ -32,5 +32,5 @@
         </div>
     </ng-container>
 
-    <button mat-flat-button color="primary" style="width: 50%; color: white" [disabled]="files.length == 0" class="my-2">Enviar Videos</button>
+    <button mat-flat-button color="primary" style="width: 50%; color: white" [disabled]="files.length == 0" class="my-2" (click)="submitFile()">Enviar Videos</button>
 </div>

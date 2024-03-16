@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation, fadeOutAnimation } from '../../core/constants/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FileService } from 'src/app/core/services/file.service';
+import { FilePlayload } from 'src/app/core/interface/file-playload';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   form!: FormGroup
 
-  constructor(private formBuilder: FormBuilder,) {
+  constructor(private formBuilder: FormBuilder, private fileService: FileService) {
 
   }
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   initialForm() {
     this.form = this.formBuilder.group({
-      usuario:  ['', Validators.required]
+      usuario: ['', Validators.required]
     });
   }
 
@@ -38,11 +40,33 @@ export class HomeComponent implements OnInit {
     this.displayButtonUpload = false;
   }
 
-  uploadFile() {
-
+  get usuario() {
+    return this.form.get('usuario')?.value
   }
 
-  downloadFile() { }
+  submitFile() {
+
+    const filePayload: FilePlayload[] = [];
+
+    this.files.forEach(f => {
+      filePayload.push({
+        "nome": f.name,
+        "usuario": this.usuario,
+        "diretorioVideo": "assets/videos",
+        "diretorioZip": ""
+      } as FilePlayload)
+    })
+
+    this.fileService.uploadFile(filePayload).subscribe({
+      next: response => {
+
+      },
+      error: response => {
+        console.log(response)
+      }
+    })
+
+  }
 
   removeFile(index: number): void {
     this.files.splice(index, 1); // Remove o arquivo do array

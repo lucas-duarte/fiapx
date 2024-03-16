@@ -17,9 +17,7 @@ export class FileService {
     return this.http.get<FilePlayload[]>(url, { responseType: 'blob' as 'json' });
   }
 
-  uploadFile(file: File) {
-    const formData = new FormData();
-    formData.append('formFile', file);
-    return this.http.post<any>(`${this.API_URL}`, formData);
+  uploadFile(data: FilePlayload[]) {
+    return this.http.post<FilePlayload[]>(`${this.API_URL}`, data);
   }
 }

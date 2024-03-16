@@ -1,14 +1,16 @@
-<div class="alert alert-primary mt-1 mx-3 shadow-none d-flex align-items-center justify-content-center"
-role="alert" [@fadeIn] [@fadeOut] #alert>
-<mat-icon class="mx-3">info</mat-icon> Nenhum arquivo
-</div>
-<div *ngFor="let file of files; let i = index"
-    class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
-    role="alert" [@fadeIn] [@fadeOut]>
-    <div class="d-flex align-items-center">
-        <mat-icon class="mx-4">attach_file</mat-icon>{{ file}}
+<div class="container text-center mt-5">
+    <div class="alert alert-primary mt-1 mx-3 shadow-none d-flex align-items-center justify-content-center" role="alert"
+        [@fadeIn] [@fadeOut] #alert *ngIf="files.length == 0">
+        <mat-icon class="mx-3">info</mat-icon> Nenhum arquivo
     </div>
-    <button mat-icon-button class="p-0 me-4" >
-        <mat-icon style="color: red">do_not_disturb_on</mat-icon>
-    </button>
+    <div *ngFor="let file of files; let i = index"
+        class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
+        role="alert" [@fadeIn] [@fadeOut]>
+        <div class="d-flex align-items-center">
+            <mat-icon class="mx-4">attach_file</mat-icon>{{file?.nome}}
+        </div>
+        <button mat-icon-button class="p-0 me-4" (click)="downloadFile()">
+            <mat-icon color="primary">download</mat-icon>
+        </button>
+    </div>
 </div>
