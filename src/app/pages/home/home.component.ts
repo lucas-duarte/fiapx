@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fadeInAnimation, fadeOutAnimation } from '../core/constants/animations';
+import { fadeInAnimation, fadeOutAnimation } from '../../core/constants/animations';
 
 @Component({
   selector: 'app-home',

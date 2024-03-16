@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { UploadFileModule } from './upload-file/upload-file.module';
-import { FileSizePipe } from '../core/pipes/file-size.pipe';
+import { FileSizePipe } from '../../core/pipes/file-size.pipe';
 
 @NgModule({
   declarations: [
