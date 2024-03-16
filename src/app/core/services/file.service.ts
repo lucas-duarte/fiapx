@@ -12,8 +12,8 @@ export class FileService {
 
   constructor(protected http: HttpClient) { }
 
-  getFileList(id: string): Observable<FilePlayload[]> {
-    const url = `${this.API_URL}/${id}`;
+  getFileList(): Observable<FilePlayload[]> {
+    const url = `${this.API_URL}`;
     return this.http.get<FilePlayload[]>(url, { responseType: 'blob' as 'json' });
   }
 

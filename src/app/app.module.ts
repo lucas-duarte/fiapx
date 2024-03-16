@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterLink, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterLink, RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     MatToolbarModule,
     RouterModule,
-    RouterLink
+    RouterLink,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

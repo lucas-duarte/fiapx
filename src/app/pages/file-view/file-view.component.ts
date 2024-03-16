@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation, fadeOutAnimation } from 'src/app/core/constants/animations';
+import { FilePlayload } from 'src/app/core/interface/file-playload';
 import { FileService } from 'src/app/core/services/file.service';
 
 @Component({
@@ -8,11 +9,19 @@ import { FileService } from 'src/app/core/services/file.service';
   styleUrls: ['./file-view.component.scss'],
   animations: [fadeInAnimation, fadeOutAnimation]
 })
-export class FileViewComponent {
-
-constructor(private fileService: FileService){}
+export class FileViewComponent implements OnInit {
 
   displayButtonUpload: boolean = false;
-  files: File[] = [];
+  files: FilePlayload[] = [];
+
+constructor(private fileService: FileService){}
+  ngOnInit(): void {
+    this.fileService.getFileList().subscribe({
+      next: response => {
+        this.files = response
+      }
+    })
+  }
+
 
 }
