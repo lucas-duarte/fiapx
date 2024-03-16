@@ -14,27 +14,29 @@ export class FileViewComponent implements OnInit {
   displayButtonUpload: boolean = false;
   files: FilePlayload[] = [];
 
-constructor(private fileService: FileService){}
+  constructor(private fileService: FileService) { }
+
   ngOnInit(): void {
+    this.files =
+      [{
+        "nome": "Arquivo1.mp4",
+        "usuario": "Tiago",
+        "diretorioVideo": "C:/teste",
+        "diretorioZip": ""
+      },
+      {
+        "nome": "Arquivo2.mp4",
+        "usuario": "Tiago",
+        "diretorioVideo": "C:/teste",
+        "diretorioZip": ""
+      }] as FilePlayload[];
     // this.fileService.getFileList().subscribe({
     //   next: response => {
-        
+    //     this.files = response
     //   }
     // })
-    this.files = [{
-      "nome": "Arquivo1.mp4",
-      "usuario": "Tiago",
-      "diretorioVideo": "C:/teste",
-      "diretorioZip": ""
-    },
-    {
-      "nome": "Arquivo2.mp4",
-      "usuario": "Tiago",
-      "diretorioVideo": "C:/teste",
-      "diretorioZip": ""
-    }] as FilePlayload[]
   }
-  
+
   downloadFile() { }
 
 }

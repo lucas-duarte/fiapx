@@ -3,6 +3,7 @@ import { fadeInAnimation, fadeOutAnimation } from '../../core/constants/animatio
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileService } from 'src/app/core/services/file.service';
 import { FilePlayload } from 'src/app/core/interface/file-playload';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   form!: FormGroup
 
-  constructor(private formBuilder: FormBuilder, private fileService: FileService) {
+  constructor(private formBuilder: FormBuilder, private fileService: FileService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -66,6 +67,7 @@ export class HomeComponent implements OnInit {
       }
     })
 
+    this.router.navigate(['/file']);    
   }
 
   removeFile(index: number): void {
