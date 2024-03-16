@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+
+$primary-color: var(--primary-color, #145581);
+$accent-color: var(--accent-color, #2baae1);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: (
+      default: $primary-color
+    ),
+    accent: (
+      default: $accent-color
+    )
+  ),
+  density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: white;}
