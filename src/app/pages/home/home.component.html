@@ -1,4 +1,11 @@
 <div class="container text-center mt-5">
+
+    <form [formGroup]="form" class="mt-2">
+        <mat-form-field appearance="outline"  style="width: 100%;">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="usuario">
+        </mat-form-field>
+    </form>
     <div class="row">
         <app-upload-file (fileEvent)="getFile($event)" />
     </div>
@@ -25,5 +32,5 @@
         </div>
     </ng-container>
 
-    <button mat-flat-button color="primary" style="width: 80%; color: white" [disabled]="files.length == 0" class="my-2">Enviar Videos</button>
+    <button mat-flat-button color="primary" style="width: 50%; color: white" [disabled]="files.length == 0" class="my-2">Enviar Videos</button>
 </div>

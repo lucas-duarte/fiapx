@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation, fadeOutAnimation } from '../../core/constants/animations';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,25 @@ import { fadeInAnimation, fadeOutAnimation } from '../../core/constants/animatio
   styleUrls: ['./home.component.scss'],
   animations: [fadeInAnimation, fadeOutAnimation]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  form!: FormGroup
+
+  constructor(private formBuilder: FormBuilder,) {
+
+  }
+  ngOnInit(): void {
+    this.initialForm()
+  }
 
   displayButtonUpload: boolean = false;
   files: File[] = [];
+
+  initialForm() {
+    this.form = this.formBuilder.group({
+      usuario:  ['', Validators.required]
+    });
+  }
 
   getFile(file: File[]) {
     if (file) {
@@ -22,11 +38,11 @@ export class HomeComponent {
     this.displayButtonUpload = false;
   }
 
-  uploadFile(){
-    
+  uploadFile() {
+
   }
 
-  downloadFile(){}
+  downloadFile() { }
 
   removeFile(index: number): void {
     this.files.splice(index, 1); // Remove o arquivo do array

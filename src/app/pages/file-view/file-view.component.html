@@ -1,4 +1,7 @@
-<p>file-view works!</p>
+<div class="alert alert-primary mt-1 mx-3 shadow-none d-flex align-items-center justify-content-center"
+role="alert" [@fadeIn] [@fadeOut] #alert>
+<mat-icon class="mx-3">info</mat-icon> Nenhum arquivo selecionado
+</div>
 <div *ngFor="let file of files; let i = index"
     class="alert alert-field border mt-2 shadow-none d-flex align-items-center justify-content-between mx-3"
     role="alert" [@fadeIn] [@fadeOut]>
