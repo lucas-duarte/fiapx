@@ -9,17 +9,17 @@ import { collapseAnimation, expandAnimation } from 'src/app/core/constants/anima
 })
 export class UploadFileComponent {
 
-  @Output() fileEvent = new EventEmitter<File>();
+  @Output() fileEvent = new EventEmitter<File[]>();
   @ViewChild('customFileInput') customFileInput!: ElementRef
   @ViewChild('fileUpload') fileUpload!: ElementRef
   dragAreaClass: string = "";
   @Input() accept?: string = "*";
-  selectedFile: File | undefined;
+  selectedFiles: File[] = [];
   isValid: boolean = true;
 
   setFile(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.fileEvent.emit(this.selectedFile);
+    this.selectedFiles = Array.from(event.target.files);
+    this.fileEvent.emit(this.selectedFiles);
   }
 
   onFileSelected() {
@@ -36,13 +36,14 @@ export class UploadFileComponent {
     this.dragAreaClass = "";
     event.stopPropagation();
     if (event.dataTransfer?.files) {
-      this.selectedFile = event?.dataTransfer.files[0];
+      this.selectedFiles = Array.from(event.dataTransfer.files);
+      this.fileEvent.emit(this.selectedFiles);
     }
   }
 
   deleteFile() {
     this.customFileInput.nativeElement.value = null;
-    this.selectedFile = undefined;
+    this.selectedFiles = [];
   }
 
   validationInput(value: boolean){

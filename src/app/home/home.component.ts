@@ -10,12 +10,12 @@ import { fadeInAnimation, fadeOutAnimation } from '../core/constants/animations'
 export class HomeComponent {
 
   displayButtonUpload: boolean = false;
-  file!: File;
+  files: File[] = [];
 
-  getFile(file: File) {
+  getFile(file: File[]) {
     if (file) {
       this.displayButtonUpload = true;
-      this.file = file;
+      this.files = file;
       console.log(file);
       return
     }
@@ -28,5 +28,10 @@ export class HomeComponent {
 
   downloadFile(){}
 
-  removeFile(){}
+  removeFile(index: number): void {
+    this.files.splice(index, 1); // Remove o arquivo do array
+    if (this.files.length === 0) {
+      this.displayButtonUpload = false; // Se não houver mais arquivos, esconde o botão de upload
+    }
+  }
 }
